@@ -4,7 +4,7 @@
 	height: 670px;
 	background: #83afe2;
 	color: #141614;
-	border-color: #131212;
+	border-color: #b17676;
 	border-width: 1px;
 	border-style: solid;
 	font-family: "Helvetica";
@@ -56,17 +56,20 @@ h1 {
 	color: #5daa04;
 }
 
-
-input  {
-	align-items: center;	
+.topnav {
+    background-color: rgb(41, 46, 48);
+    overflow: hidden;
 }
 
+.topnav a {
+	float: right;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+  }
 
-nav {
-	text-align: right;
-}
 
-a {
-	text-align: right;
-	align-items: center;
-}
+  
+

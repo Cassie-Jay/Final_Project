@@ -16,7 +16,7 @@ export class TaskManager {
       
     }
     //add the new task object to the tasks array of the class
-   this.tasks.push(newTask) 
+   this.tasks.push(newTask) ;
   }
 
   createTaskHtml = ( name, description, assignedTo, dueDate, status) => {
@@ -33,17 +33,33 @@ export class TaskManager {
             <p>${description}</p>
         </li>
     `
-    return html;
+    console.log("Form Details:  ",name, description, assignedTo, dueDate, status);
+    const row = `
+      <tr>
+        <td>${name}</td>
+        <td>${description}</td>
+        <td>${assignedTo}</td>       
+        <td>${dueDate}</td>
+        <td>${status}</td>
+      </tr>
+    `
+    console.log("row",row);
+    return row;
     }
+  
     render=()=>{
+      console.log("RENDER");
       const tasksHtmlList = [];
       for (let i=0; i<this.tasks.length; i++){
-        let date = new Date(this.tasks[i].dueDate);
+        let task = this.tasks[i];
+        let date = new Date(task.taskDueDate);
         const formattedDate = date.toString();
-        const taskHtML = createTaskHtml(this.name, this.description, this.assignedTo, formattedDate, this.status);
-        tasksHtmlList.push(taskHtML);
+        console.log(task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.status)
+        const taskHtml = this.createTaskHtml(task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.status);
+        tasksHtmlList.push(taskHtml);
         const tasksHtml = tasksHtmlList.join('\n');
-        document.getElementById('tasksList').innerHtml=tasksHtml;
+        console.log("tasksHtml: "+tasksHtml);
+        document.getElementById('tasksList').append(tasksHtml);
       }
     }
 }

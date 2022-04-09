@@ -1,28 +1,20 @@
-
-.container {
-	width: 5px;
-	height: 670px;
-	background: #83afe2;
-	color: #141614;
-	border-color: #b17676;
-	border-width: 1px;
-	border-style: solid;
+.mycontainer{
+	background-image: url('https://media.istockphoto.com/photos/checklist-concept-businessman-checking-mark-on-the-checkboxes-picture-id1348238990?k=20&m=1348238990&s=612x612&w=0&h=uGkLa3rrT4ngR54yyWezKbB-JqPMlvhBksV69agJsQI=');
+	color:  #8ee08e;
+	border: 1px solid #b17676;
+	padding: 3em 1rem;
 	font-family: "Helvetica";
 	font-weight: 400;
-	font-size: 14px;
-	
-	text-align:left;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
-label {
-	width: auto;
-	height: auto;
-	
-}
+
+
 h5 {
-    text-align:left;
 
-	color: rgb(11, 11, 12);
+	color: rgb(136, 214, 105);
 	
 }
 
@@ -30,7 +22,7 @@ h5 {
   #customers {
 	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
-	width: 100%;
+	
   }
   
   #customers td, #customers th {

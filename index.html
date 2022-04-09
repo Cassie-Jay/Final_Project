@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,91 +15,70 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
 
 </head>
 <body>
-<header>
-    <div class="container">
+  <header>
+    <div class="topnav">
+      <a class="active" href="#Task detail">Task detail</a>
+      <a href="#addtask">Add Task</a>
+      <a href="#home">Home</a>
+    </div>
+  </header>
+  <main>
+    <div class="container-fluid mycontainer" >
+      <form id="task_form" class="col-md-6 col-lg-3  row g-3 needs-validation "  novalidate>
 
-      <div class="card"></div>
-      <div class="card" style="width: 1rem"></div>
-        <div class="card-body">
-
-          <div class="topnav">
-            <a class="active" href="#Task detail">Task detail</a>
-            <a href="#addtask">Add Task</a>
-            <a href="#home">Home</a>
-          </div>
-<br><br>
-          <h5 class="card-title">Add Task</h5>
-
-          
-         
-          <form>
-            <div class="form-row">
-              <div class="col-md-3 mb-3">
-                <label for="validationServer01">Task Name</label>
-                <input type="text" class="form-control" id="validationServer01" value="" required>
-                <div class="valid-feedback"></div>
-              </div>                                                            
-                </div>
-
-                <div class=" col-md-3 mb-3">
-                  <label for="validationTextarea">Description</label>
-                  <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" id="w3review" name="w3review" rows="4" cols="50" required></textarea>
-                  <div class="invalid-feedback"> 
-                   
-                  </div>
-                </div>
-           
-            <div class="col-md-3 mb-3">
-              <label for="validationServer02">Assigned to</label>
-              <input type="text" class="form-control" id="validationServer02" value="" required>
-              <div class="valid-feedback"></div>
-
-              <br><br>
-
-
-              <div class="col-md-3 mb-3">
-                <label for="validationServer04">Status</label>
-                <select class="custom-select is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback" required>
-                  <option selected disabled value="">Choose...</option>
-                  <option>To Do</option>
-                  <option>In Progross</option>
-                  <option>Review</option>
-                  <option>Done</option>
-                </select>
-                <div id="validationServer04Feedback" class="invalid-feedback">
-                  
-                </div>
-              </div>
-              
-
-
-              <form action="/action_page.php">
-                <label for="tasktime"></label>
-                <input type="datetime-local" id="tasktime" name="tasktime" class="form-control" id="validationServer01" value="" required>
-               <div class="valid-feedback"></div>
-                <br>
-                <input type="submit">
-                
-              </form>
-
-            </div>
-            
-                </div>
-              </div>
-          </form>
-
+        <div class="col-12 form-group">
+          <label for="Taskname" class="form-label">Task name</label>
+          <input type="text" class="form-control bg-dark text-white" id="Taskname" placeholder="Enter task name" required>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">This field cannot be empty!</div>
         </div>
-      </div>
 
-      </div>
-    </header>
+        <div class="col-12 form-group">
+          <label for="Description" class="form-label">Description</label>
+          <textarea rows = "5" type="text" class="form-control bg-dark text-white" id="Description"  required></textarea>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">This field cannot be empty!</div>
+        </div>
+        
+        <div class="col-12 form-group">
+          <label for="AssignedTo" class="form-label">Assigned To</label>
+          <input type="text" class="form-control bg-dark text-white" id="AssignedTo" placeholder="Assigned to someone" required>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">This field cannot be empty!</div>
+        </div>
+        
+        <div class="col-12 form-group">
+          <label for="status"> Status</label>
+          <select class="form-control bg-dark text-white"id="status">
+            <option selected value="To do"> To do</option>
+            <option selected value="Inprogress">In progress</option>
+            <option selected value="Review">Review</option>
+            <option selected value="Done">Done</option>
+          </select>
+        </div>
+    
+        <div class="col-12 form-group">
+          <label for="Duedate" class="form-label">Due Date</label>
+          <input type="date" class="form-control bg-dark text-white" id="Duedate"  required>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">This field cannot be empty!</div>
+        </div>
+       
+        
+  
+        <div class="col-12">
+          <button class="btn btn-warning" type="submit">Submit form</button>
+        </div>
+      </form>
 
-    <br><br>
-<h1> Task</h1>
+    </div>
+  </main>
+
 <div>
+  <h1> Task</h1>
   <table id="customers">
     <tr>
-      <th>Task Name</th>
+      <th>Name</th>
       <th>Description</th>
       <th>Assigned To</th>
       <th>Status</th>
@@ -115,12 +94,13 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
     
   </table>
 
-  <img src="https://media.istockphoto.com/photos/checklist-concept-businessman-checking-mark-on-the-checkboxes-picture-id1348238990?k=20&m=1348238990&s=612x612&w=0&h=uGkLa3rrT4ngR54yyWezKbB-JqPMlvhBksV69agJsQI=" width="900" height="300">
-
+ 
 </div>
   
 
 <!-- JavaScript Bundle with Popper -->
+
+<script type="module" src="./js/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

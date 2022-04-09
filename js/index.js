@@ -14,6 +14,7 @@ taskForm.addEventListener("submit", event => {
     let statusInput = document.getElementById('status');
     let dateInput = document.getElementById('Duedate');
     myTaskManager.addTask(nameInput.value, descriptionInput.value, assignedToInput.value, dateInput.value, statusInput.value)
+    myTaskManager.render();
     console.table(myTaskManager.tasks);
     nameInput.value = "";
     descriptionInput.value = "";
@@ -42,3 +43,6 @@ taskForm.addEventListener("submit", event => {
       })
   })()
   console.log('my name');
+
+  let taskHtml = myTaskManager.createTaskHtml("Take out trash","Take out trash","Take out trash","Take out trash","Take out trash");
+  console.log(taskHtml);

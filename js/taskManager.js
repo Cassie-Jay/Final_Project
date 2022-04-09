@@ -18,4 +18,32 @@ export class TaskManager {
     //add the new task object to the tasks array of the class
    this.tasks.push(newTask) 
   }
+
+  createTaskHtml = ( name, description, assignedTo, dueDate, status) => {
+    const html = `
+        <li class="list-group-item">
+            <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
+                <h5>${name}</h5>
+                <span class="badge badge-danger">${status}</span>
+            </div>
+            <div class="d-flex w-100 mb-3 justify-content-between">
+                <small>Assigned To: ${assignedTo}</small>
+                <small>Due: ${dueDate}</small>
+            </div>
+            <p>${description}</p>
+        </li>
+    `
+    return html;
+    }
+    render=()=>{
+      const tasksHtmlList = [];
+      for (let i=0; i<this.tasks.length; i++){
+        let date = new Date(this.tasks[i].dueDate);
+        const formattedDate = date.toString();
+        const taskHtML = createTaskHtml(this.name, this.description, this.assignedTo, formattedDate, this.status);
+        tasksHtmlList.push(taskHtML);
+        const tasksHtml = tasksHtmlList.join('\n');
+        document.getElementById('tasksList').innerHtml=tasksHtml;
+      }
+    }
 }

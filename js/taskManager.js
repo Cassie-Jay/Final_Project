@@ -57,9 +57,10 @@ export class TaskManager {
         console.log(task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.status)
         const taskHtml = this.createTaskHtml(task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.status);
         tasksHtmlList.push(taskHtml);
+      }
         const tasksHtml = tasksHtmlList.join('\n');
         console.log("tasksHtml: "+tasksHtml);
         document.getElementById('tasksList').append(tasksHtml);
-      }
+        //taskList.innerHTML = tasksHtml;
     }
 }

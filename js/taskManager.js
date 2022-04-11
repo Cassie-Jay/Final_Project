@@ -35,13 +35,13 @@ export class TaskManager {
     `
     console.log("Form Details:  ",name, description, assignedTo, dueDate, status);
     const row = `
-      <tr>
+     
         <td>${name}</td>
         <td>${description}</td>
         <td>${assignedTo}</td>       
         <td>${dueDate}</td>
         <td>${status}</td>
-      </tr>
+     
     `
     console.log("row",row);
     return row;
@@ -57,10 +57,11 @@ export class TaskManager {
         console.log(task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.status)
         const taskHtml = this.createTaskHtml(task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.status);
         tasksHtmlList.push(taskHtml);
+        // const tasksHtml = tasksHtmlList.join('\n');
+        let taskRow = document.createElement('tr');
+        taskRow.innerHTML = taskHtml;
+        console.log("taskHtml: "+taskHtml);
+        document.getElementById('tasksList').append(taskRow);
       }
-        const tasksHtml = tasksHtmlList.join('\n');
-        console.log("tasksHtml: "+tasksHtml);
-        document.getElementById('tasksList').append(tasksHtml);
-        //taskList.innerHTML = tasksHtml;
     }
 }

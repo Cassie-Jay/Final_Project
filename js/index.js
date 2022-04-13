@@ -8,7 +8,7 @@ const taskForm = document.getElementById('task_form');
 
 taskForm.addEventListener("submit", event => {
     event.preventDefault();
-    let nameInput = document.getElementById('Taskname');
+    let nameInput = document.getElementById('newTaskNameInput');
     let descriptionInput = document.getElementById('Description');
     let assignedToInput = document.getElementById('AssignedTo');
     let statusInput = document.getElementById('status');
@@ -43,4 +43,12 @@ taskForm.addEventListener("submit", event => {
         }, false)
       })
   })()
+  
+
+  /* Task 6 */
+  const validFormFieldInput = (data) =>{
+    const newTaskNameInput = document.querySelector('#newTaskNameInput');
+  const name = newTaskNameInput.value;
+  console.log("newTaskNameInput", name);
+  }
   console.log('my name');

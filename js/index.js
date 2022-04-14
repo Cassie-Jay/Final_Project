@@ -71,7 +71,7 @@ taskRows.forEach( e => {
 })
 // Add an 'onclick' event listener to the Tasks List
 tasksList.addEventListener('click', (event) => {
-
+console.log("addEventListerner");
 
 
 

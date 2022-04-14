@@ -6,6 +6,7 @@ const myTaskManager = new TaskManager();
 // myTaskManager.addTask('do laundary', 'go to gym', 'Elias', new Date().toDateString())
 const taskForm = document.getElementById('task_form');
 
+
 taskForm.addEventListener("submit", event => {
     event.preventDefault();
     let nameInput = document.getElementById('newTaskNameInput');
@@ -52,3 +53,45 @@ taskForm.addEventListener("submit", event => {
   console.log("newTaskNameInput", name);
   }
   console.log('my name');
+
+
+  // Select the Tasks List
+  console.log("  let taskRows = document.querySelectorAll(.mark-done-container");
+  taskRows.forEach( e => {
+    let button = e.querySelector("button");
+  
+    button.addEventListener("click", ()=> console.log("MARK AS COMPLETE"))
+  })
+const tasksList = document.querySelector('#tasksList');
+let taskRows = document.querySelectorAll(".mark-done-container");
+taskRows.forEach( e => {
+  let button = e.querySelector("button");
+  console.log(button.innerHTML);
+  button.addEventListener("click", ()=> console.log("MARK AS COMPLETE"))
+})
+// Add an 'onclick' event listener to the Tasks List
+tasksList.addEventListener('click', (event) => {
+
+
+
+
+    // Check if a "Mark As Done" button was clicked
+    if (event.target.classList.contains('done-button')) {
+        // Get the parent Task
+        const parentTask = event.target.parentElement.parentElement;
+
+        // Get the taskId of the parent Task.
+        const taskId = Number(parentTask.dataset.taskId);
+
+        // Get the task from the TaskManager using the taskId
+        const task = taskManager.getTaskById(taskId);
+
+        // Update the task status to 'DONE'
+        task.status = 'DONE';
+
+        // Render the tasks
+        taskManager.render();
+        }
+        });
+
+       

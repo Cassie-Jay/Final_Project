@@ -19,9 +19,25 @@ export class TaskManager {
    this.tasks.push(newTask) ;
   }
 
-  createTaskHtml = ( name, description, assignedTo, dueDate, status) => {
+    getTaskById(taskId) {
+      let foundTask;
+   
+   //Creat a variable to store found task from Step 4
+   //Loop and   // Check if its the right task by comparing the task's id to the id passed as a parameter
+
+    for (let i=0; i < this.tasks.length; i++) {
+
+      const task = this.tasks[i];
+
+      if (tasks.id === taskId) {
+        foundTask = task;
+      }
+    }
+  }
+
+  createTaskHtml = (id,name, description, assignedTo, dueDate, status) => {
     const html = `
-        <li class="list-group-item">
+        <li class="list-group-item" data-task-id=${id}>
             <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
                 <h5>${name}</h5>
                 <span class="badge badge-danger">${status}</span>
@@ -36,17 +52,21 @@ export class TaskManager {
         </div>
         </li>
     `
-    console.log("Form Details:  ",name, description, assignedTo, dueDate, status);
+    /*Task 7, Step 3; adding an id*/
+    console.log("Form Details:  ", id, name, description, assignedTo, dueDate, status);
     const row = `
      
+        <td class='data-task-id=${id}'>${id}</td>
         <td>${name}</td>
         <td>${description}</td>
         <td>${assignedTo}</td>       
         <td>${dueDate}</td>
         <td>${status}</td>
         <td class="mark-done-container"></td>
-     
+        
+        
     `
+    //I put the id there because of sept 3 in task 7//
     console.log("row",row);
     return row;
     }
@@ -67,8 +87,9 @@ export class TaskManager {
         let date = new Date(task.taskDueDate);
         const formattedDate = date.toString();
         console.log(task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.status)
-        const taskHtml = this.createTaskHtml(task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.status);
+        const taskHtml = this.createTaskHtml(task.id, task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.status,);
         tasksHtmlList.push(taskHtml);
+        //added task.id here because of instructions//
         // const tasksHtml = tasksHtmlList.join('\n');
         let taskRow = document.createElement('tr');
         taskRow.innerHTML = taskHtml;

@@ -31,6 +31,9 @@ export class TaskManager {
                 <small>Due: ${dueDate}</small>
             </div>
             <p>${description}</p>
+            <div class="d-flex w-100 justify-content-end">
+            <button class="btn btn-outline-success done-button ${status === 'TODO' ? 'visible' : 'invisible'}">Mark As Done</button>
+        </div>
         </li>
     `
     console.log("Form Details:  ",name, description, assignedTo, dueDate, status);
@@ -41,6 +44,7 @@ export class TaskManager {
         <td>${assignedTo}</td>       
         <td>${dueDate}</td>
         <td>${status}</td>
+        <td class="mark-done-container"></td>
      
     `
     console.log("row",row);
@@ -60,7 +64,18 @@ export class TaskManager {
         // const tasksHtml = tasksHtmlList.join('\n');
         let taskRow = document.createElement('tr');
         taskRow.innerHTML = taskHtml;
+        const buttonstring = `
+       
+        <button class="btn btn-outline-success done-button ${task.status === 'TODO' ? 'visible' : 'invisible'}">Mark As Done</button>
+  
+        `;
+        const button = document.createElement('button');
+        button.innerHTML = "Mark As Done";
+        button.setAttribute('class', 'done-button');
+
+        taskRow.getElementsByClassName("mark-done-container")[0].appendChild(button);
         console.log("taskHtml: "+taskHtml);
+        console.log("button: "+taskRow.getElementsByClassName("mark-done-container")[0].innerHTML);
         document.getElementById('tasksList').append(taskRow);
       }
     }

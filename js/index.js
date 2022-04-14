@@ -56,22 +56,18 @@ taskForm.addEventListener("submit", event => {
 
 
   // Select the Tasks List
-  console.log("  let taskRows = document.querySelectorAll(.mark-done-container");
-  taskRows.forEach( e => {
-    let button = e.querySelector("button");
   
-    button.addEventListener("click", ()=> console.log("MARK AS COMPLETE"))
-  })
-const tasksList = document.querySelector('#tasksList');
-let taskRows = document.querySelectorAll(".mark-done-container");
-taskRows.forEach( e => {
-  let button = e.querySelector("button");
-  console.log(button.innerHTML);
-  button.addEventListener("click", ()=> console.log("MARK AS COMPLETE"))
-})
+//   console.log("  let taskRows = document.querySelectorAll(.mark-done-container");
+// const tasksList = document.querySelector('#tasksList');
+// let taskRows = document.querySelectorAll(".mark-done-container");
+// taskRows.forEach( e => {
+//   let button = e.querySelector("button");
+//   console.log(button.innerHTML);
+//   button.addEventListener("click", ()=> console.log("MARK AS COMPLETE"))
+// })
 // Add an 'onclick' event listener to the Tasks List
 tasksList.addEventListener('click', (event) => {
-console.log("addEventListerner");
+console.log("MARK AS DONE");
 
 
 
@@ -84,7 +80,7 @@ console.log("addEventListerner");
         const taskId = Number(parentTask.dataset.taskId);
 
         // Get the task from the TaskManager using the taskId
-        const task = taskManager.getTaskById(taskId);
+        const task = myTaskManager.getTaskById(taskId);
 
         // Update the task status to 'DONE'
         task.status = 'DONE';

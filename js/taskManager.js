@@ -50,7 +50,15 @@ export class TaskManager {
     console.log("row",row);
     return row;
     }
-  
+    
+    addEventListener = () =>{
+      let taskRows = document.querySelectorAll(".mark-done-container");
+      taskRows.forEach( e => {
+        let button = e.querySelector(".done-button");
+      
+        button.addEventListener("click", ()=> console.log("MARK AS COMPLETE"))
+      })
+    }
     render=()=>{
       console.log("RENDER");
       const tasksHtmlList = [];

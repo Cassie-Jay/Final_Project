@@ -13,7 +13,7 @@ export class TaskManager {
       taskDescription: description,
       taskAssignedTo: assignedTo,
       taskDueDate: dueDate,
-      
+      taskStatus: status
     }
     //add the new task object to the tasks array of the class
    this.tasks.push(newTask) ;
@@ -22,17 +22,20 @@ export class TaskManager {
     getTaskById(taskId) {
       let foundTask;
    
-   //Creat a variable to store found task from Step 4
-   //Loop and   // Check if its the right task by comparing the task's id to the id passed as a parameter
+      //Creat a variable to store found task from Step 4
+      //Loop and   // Check if its the right task by comparing the task's id to the id passed as a parameter
 
-    for (let i=0; i < this.tasks.length; i++) {
-
-      const task = this.tasks[i];
-
-      if (tasks.id === taskId) {
-        foundTask = task;
+      for (let i=0; i < this.tasks.length; i++) {
+        let task = this.tasks[i];
+        console.log("looking for a task "+task["taskStatus"])
+        
+        if (String(task.taskId) == String(taskId)) {
+          console.log(taskId, task.taskId)
+          foundTask = task;
+        }
       }
-    }
+      console.log("FoundTask: "+foundTask);
+      return foundTask;
   }
 
   createTaskHtml = (id,name, description, assignedTo, dueDate, status) => {
@@ -52,16 +55,14 @@ export class TaskManager {
         </div>
         </li>
     `
-    /*Task 7, Step 3; adding an id*/
+    /*Task 7, Step 3; adding an id <td class='data-task-id=${id}'></td>*/
     console.log("Form Details:  ", id, name, description, assignedTo, dueDate, status);
-    const row = `
-     
-        <td class='data-task-id=${id}'>${id}</td>
+    const row = `        
         <td>${name}</td>
         <td>${description}</td>
-        <td>${assignedTo}</td>       
+        <td>${assignedTo}</td>  
+        <td>${status}</td>     
         <td>${dueDate}</td>
-        <td>${status}</td>
         <td class="mark-done-container"></td>
         
         
@@ -80,11 +81,13 @@ export class TaskManager {
         let date = new Date(task.taskDueDate);
         const formattedDate = date.toString();
         console.log(task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.status)
-        const taskHtml = this.createTaskHtml(task.id, task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.status,);
+        const taskHtml = this.createTaskHtml(task.taskId, task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.taskStatus);
+        console.log(" Status:  "+task.status);
         tasksHtmlList.push(taskHtml);
         //added task.id here because of instructions//
         // const tasksHtml = tasksHtmlList.join('\n');
         let taskRow = document.createElement('tr');
+        taskRow.setAttribute("data-task-id",`${task.taskId}`);
         taskRow.innerHTML = taskHtml;
         const buttonstring = `
        

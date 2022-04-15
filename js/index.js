@@ -67,27 +67,30 @@ taskForm.addEventListener("submit", event => {
 // })
 // Add an 'onclick' event listener to the Tasks List
 tasksList.addEventListener('click', (event) => {
-console.log("MARK AS DONE");
+  console.log("MARK AS DONE");
 
 
+  console.log("getTaskByID: ",myTaskManager.getTaskById(1))
 
     // Check if a "Mark As Done" button was clicked
-    if (event.target.classList.contains('done-button')) {
-        // Get the parent Task
-        const parentTask = event.target.parentElement.parentElement;
+  if (event.target.classList.contains('done-button')) {
+    // Get the parent Task
+    const parentTask = event.target.parentElement.parentElement;
 
-        // Get the taskId of the parent Task.
-        const taskId = Number(parentTask.dataset.taskId);
+    // Get the taskId of the parent Task.
+    const taskId = Number(parentTask.dataset.taskId);
+    console.log("taskId of the parent:",taskId);
 
-        // Get the task from the TaskManager using the taskId
-        const task = myTaskManager.getTaskById(taskId);
+    // Get the task from the TaskManager using the taskId
+    const task = myTaskManager.getTaskById(taskId);
 
-        // Update the task status to 'DONE'
-        task.status = 'DONE';
+    // Update the task status to 'DONE'
+    console.log("taskStatus:",task);
+    task.taskStatus = 'DONE';
 
-        // Render the tasks
-        taskManager.render();
-        }
-        });
+    // Render the tasks
+    myTaskManager.render();
+  }
+});
 
        

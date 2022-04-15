@@ -73,6 +73,20 @@ export class TaskManager {
     }
     
 
+    save() {
+      // Create a JSON string of the tasks
+      const tasksJson = JSON.stringify(this.tasks);
+
+      // Store the JSON string in localStorage
+      localStorage.setItem('tasks', tasksJson);
+
+      // Convert the currentId to a string;
+      const currentId = String(this.currentId);
+
+      // Store the currentId in localStorage
+      localStorage.setItem('currentId', currentId);
+  }
+
     render=()=>{
       console.log("RENDER");
       const tasksHtmlList = [];

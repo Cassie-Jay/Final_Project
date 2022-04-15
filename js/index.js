@@ -88,9 +88,10 @@ tasksList.addEventListener('click', (event) => {
     console.log("taskStatus:",task);
     task.taskStatus = 'DONE';
 
+    myTaskManager.save();  
+
     // Render the tasks
     myTaskManager.render();
   }
 });
 
-       

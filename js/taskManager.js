@@ -27,36 +27,36 @@ export class TaskManager {
 
       for (let i=0; i < this.tasks.length; i++) {
         let task = this.tasks[i];
-        console.log("looking for a task "+task["taskStatus"])
+        // console.log("looking for a task "+task["taskStatus"])
         
         if (String(task.taskId) == String(taskId)) {
-          console.log(taskId, task.taskId)
+          // console.log(taskId, task.taskId)
           foundTask = task;
         }
       }
-      console.log("FoundTask: "+foundTask);
+      // console.log("FoundTask: "+foundTask);
       return foundTask;
   }
 
   createTaskHtml = (id,name, description, assignedTo, dueDate, status) => {
-    const html = `
-        <li class="list-group-item" data-task-id=${id}>
-            <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
-                <h5>${name}</h5>
-                <span class="badge badge-danger">${status}</span>
-            </div>
-            <div class="d-flex w-100 mb-3 justify-content-between">
-                <small>Assigned To: ${assignedTo}</small>
-                <small>Due: ${dueDate}</small>
-            </div>
-            <p>${description}</p>
-            <div class="d-flex w-100 justify-content-end">
-            <button class="btn btn-outline-success done-button ${status === 'TODO' ? 'visible' : 'invisible'}">Mark As Done</button>
-        </div>
-        </li>
-    `
+  //   const html = `
+  //       <li class="list-group-item" data-task-id=${id}>
+  //           <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
+  //               <h5>${name}</h5>
+  //               <span class="badge badge-danger">${status}</span>
+  //           </div>
+  //           <div class="d-flex w-100 mb-3 justify-content-between">
+  //               <small>Assigned To: ${assignedTo}</small>
+  //               <small>Due: ${dueDate}</small>
+  //           </div>
+  //           <p>${description}</p>
+  //           <div class="d-flex w-100 justify-content-end">
+  //           <button class="btn btn-outline-success done-button ${status === 'TODO' ? 'visible' : 'invisible'}">Mark As Done</button>
+  //       </div>
+  //       </li>
+    // `
     /*Task 7, Step 3; adding an id <td class='data-task-id=${id}'></td>*/
-    console.log("Form Details:  ", id, name, description, assignedTo, dueDate, status);
+    // console.log("Form Details:  ", id, name, description, assignedTo, dueDate, status);
     const row = `        
         <td>${name}</td>
         <td>${description}</td>
@@ -67,24 +67,26 @@ export class TaskManager {
         <td class="delete-button-container"></td>
     `
     //I put the id there because of sept 3 in task 7//
-    console.log("row",row);
+    // console.log("row",row);
     return row;
     }
     
     deleteTask(taskId) {
       // Create an empty array and store it in a new variable, newTasks
-      console.log("DELETE");
       const newTasks = [];
 
       // Loop over the tasks
       for (let i = 0; i < this.tasks.length; i++) {
         // Get the current task in the loop
         const task = this.tasks[i];
-        console.log("Delete ",task );
+        
         // Check if the task id is not the task id passed in as a parameter
         if (task.taskId !== taskId) {
-        // Push the task to the newTasks array
-        newTasks.push(task);
+          // Push the task to the newTasks array
+          newTasks.push(task);
+        }
+        else{
+          console.log("DELETE ",task );
         }
       }
       this.tasks = newTasks;
@@ -140,9 +142,9 @@ export class TaskManager {
         let task = this.tasks[i];
         let date = new Date(task.taskDueDate);
         const formattedDate = date.toString();
-        console.log(task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.status)
+        // console.log(task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.status)
         const taskHtml = this.createTaskHtml(task.taskId, task.taskName, task.taskDescription,task.taskAssignedTo,formattedDate, task.taskStatus);
-        console.log(" Status:  "+task.status);
+        // console.log(" Status:  "+task.status);
         tasksHtmlList.push(taskHtml);
         //added task.id here because of instructions//
         // const tasksHtml = tasksHtmlList.join('\n');
@@ -163,8 +165,8 @@ export class TaskManager {
 
         taskRow.getElementsByClassName("mark-done-container")[0].appendChild(button);
         taskRow.getElementsByClassName("delete-button-container")[0].appendChild(deleteButton);
-        console.log("taskHtml: "+taskHtml);
-        console.log("button: "+taskRow.getElementsByClassName("mark-done-container")[0].innerHTML);
+        // console.log("taskHtml: "+taskHtml);
+        // console.log("button: "+taskRow.getElementsByClassName("mark-done-container")[0].innerHTML);
         document.getElementById('tasksList').append(taskRow);
       }
     }

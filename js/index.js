@@ -71,7 +71,7 @@ tasksList.addEventListener('click', (event) => {
 
 
   console.log("getTaskByID: ",myTaskManager.getTaskById(1))
-
+  console.log("Button clicked: ",event.target.classList);
     // Check if a "Mark As Done" button was clicked
   if (event.target.classList.contains('done-button')) {
     // Get the parent Task

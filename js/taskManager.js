@@ -73,20 +73,21 @@ export class TaskManager {
     
     deleteTask(taskId) {
       // Create an empty array and store it in a new variable, newTasks
+      console.log("DELETE");
       const newTasks = [];
 
       // Loop over the tasks
       for (let i = 0; i < this.tasks.length; i++) {
-          // Get the current task in the loop
-          const task = this.tasks[i];
-console.log("Delete ",task );
-      // Check if the task id is not the task id passed in as a parameter
-      if (task.id !== taskId) {
-      // Push the task to the newTasks array
-      newTasks.push(task);
+        // Get the current task in the loop
+        const task = this.tasks[i];
+        console.log("Delete ",task );
+        // Check if the task id is not the task id passed in as a parameter
+        if (task.taskId !== taskId) {
+        // Push the task to the newTasks array
+        newTasks.push(task);
+        }
       }
-    }
-    this.tasks = newTasks;
+      this.tasks = newTasks;
   }
 
     save() {
@@ -126,6 +127,15 @@ console.log("Delete ",task );
     render=()=>{
       console.log("RENDER");
       const tasksHtmlList = [];
+      document.getElementById('tasksList').innerHTML = `    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Assigned To</th>
+      <th>Status</th>
+      <th>Due Date</th>
+      <th>Checkbox</th>
+      <th>Delete</th>
+    </tr> `;
       for (let i=0; i<this.tasks.length; i++){
         let task = this.tasks[i];
         let date = new Date(task.taskDueDate);

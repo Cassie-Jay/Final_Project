@@ -64,14 +64,30 @@ export class TaskManager {
         <td>${status}</td>     
         <td>${dueDate}</td>
         <td class="mark-done-container"></td>
-        
-        
+        <td class="delete-button-container"></td>
     `
     //I put the id there because of sept 3 in task 7//
     console.log("row",row);
     return row;
     }
     
+    deleteTask(taskId) {
+      // Create an empty array and store it in a new variable, newTasks
+      const newTasks = [];
+
+      // Loop over the tasks
+      for (let i = 0; i < this.tasks.length; i++) {
+          // Get the current task in the loop
+          const task = this.tasks[i];
+console.log("Delete ",task );
+      // Check if the task id is not the task id passed in as a parameter
+      if (task.id !== taskId) {
+      // Push the task to the newTasks array
+      newTasks.push(task);
+      }
+    }
+    this.tasks = newTasks;
+  }
 
     save() {
       // Create a JSON string of the tasks
@@ -86,6 +102,26 @@ export class TaskManager {
       // Store the currentId in localStorage
       localStorage.setItem('currentId', currentId);
   }
+
+  load() {
+    // Check if any tasks are saved in localStorage
+    if (localStorage.getItem('tasks')) {
+        // Get the JSON string of tasks in localStorage
+        const tasksJson = localStorage.getItem('tasks');
+
+        // Convert it to an array and store it in our TaskManager
+        this.tasks = JSON.parse(tasksJson);
+    }
+
+    // Check if the currentId is saved in localStorage
+    if (localStorage.getItem('currentId')) {
+        // Get the currentId string in localStorage
+        const currentId = localStorage.getItem('currentId');
+
+        // Convert the currentId to a number and store it in our TaskManager
+        this.currentId = Number(currentId);
+    }
+}
 
     render=()=>{
       console.log("RENDER");
@@ -103,19 +139,24 @@ export class TaskManager {
         let taskRow = document.createElement('tr');
         taskRow.setAttribute("data-task-id",`${task.taskId}`);
         taskRow.innerHTML = taskHtml;
-        const buttonstring = `
-       
-        <button class="btn btn-outline-success done-button ${task.status === 'TODO' ? 'visible' : 'invisible'}">Mark As Done</button>
-  
-        `;
+        // const buttonstring = `
+        // <button class="btn btn-outline-success done-button ${task.status === 'TODO' ? 'visible' : 'invisible'}">Mark As Done</button>
+        // <button class="btn btn-outline-danger delete-button">Delete</button>
+        // `;
         const button = document.createElement('button');
         button.innerHTML = "Mark As Done";
         button.setAttribute('class', 'done-button');
 
+        const deleteButton = document.createElement('button');
+        deleteButton.innerHTML = "delete";
+        deleteButton.setAttribute('class', 'delete-button');
+
         taskRow.getElementsByClassName("mark-done-container")[0].appendChild(button);
+        taskRow.getElementsByClassName("delete-button-container")[0].appendChild(deleteButton);
         console.log("taskHtml: "+taskHtml);
         console.log("button: "+taskRow.getElementsByClassName("mark-done-container")[0].innerHTML);
         document.getElementById('tasksList').append(taskRow);
       }
     }
 }
+

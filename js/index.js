@@ -6,6 +6,11 @@ const myTaskManager = new TaskManager();
 // myTaskManager.addTask('do laundary', 'go to gym', 'Elias', new Date().toDateString())
 const taskForm = document.getElementById('task_form');
 
+// Load the tasks from localStorage
+myTaskManager.load();
+
+// Render the tasks to the page
+myTaskManager.render();
 
 taskForm.addEventListener("submit", event => {
     event.preventDefault();
@@ -84,7 +89,7 @@ tasksList.addEventListener('click', (event) => {
 
     // Update the task status to 'DONE'
     // console.log("taskStatus:",task);
-    task.taskStatus = 'DONE';
+    task.taskStatus = 'Done';
 
     myTaskManager.save();  
 

@@ -160,7 +160,7 @@ export class TaskManager {
         button.setAttribute('class', 'done-button');
 
         const deleteButton = document.createElement('button');
-        deleteButton.innerHTML = "delete";
+        deleteButton.innerHTML = "Delete";
         deleteButton.setAttribute('class', 'delete-button');
 
         taskRow.getElementsByClassName("mark-done-container")[0].appendChild(button);

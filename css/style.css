@@ -1,7 +1,7 @@
 .mycontainer{
 	background-image: url('https://th.bing.com/th/id/R.0f75cc2d8ce258f81836f0f2f6ba2f31?rik=ZBwVici5r9WhRg&pid=ImgRaw&r=0');
 	color:  #8ee08e;
-	border: 1px solid #b17676;
+	border: 1px solid #33a4d1;
 	padding: 3em 1rem;
 	font-family: "Helvetica";
 	font-weight: 400;
@@ -9,8 +9,21 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 }
-
-
+ table, th, td {
+	
+	border: 2px solid black;
+	padding: 440px;
+	border-collapse: collapse;
+	border-radius: ;
+	text-align: center;
+	padding: 1rem 2rem;
+  }
+  
+  tr:nth-child(even) {background-color: #24ce8d;}
+  table {
+	width: 100%;
+  }
+  
 
 h5 {
 
@@ -25,46 +38,14 @@ h5 {
 	
   }
   
-  #customers td, #customers th {
-	border: 1px solid #ddd;
-	padding: 8px;
-  }
-  
-  #customers tr:nth-child(even){background-color: #f2f2f2;}
-  
-  #customers tr:hover {background-color: #ddd;}
-  
-  #customers th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	background-color: #04AA6D;
-	color: white;
-  }
-
+ 
 
 h1 {
 	text-align: center;
-	color: #5daa04;
+	color: #04AA6D;
+	font-style: italic;
 }
 
-th, td {
-  padding: 1rem 2rem;
-}
-
-.topnav {
-    background-color: rgb(41, 46, 48);
-    overflow: hidden;
-}
-
-.topnav a {
-	float: right;
-	color: #f2f2f2;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-	font-size: 17px;
-  }
 
 
   
